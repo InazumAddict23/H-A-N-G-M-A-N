@@ -38,8 +38,7 @@ def game():
     while i < incorrect_guess:
         print("Max Guess: 6")
         print("Incorrect guesses:", i)
-        print("Word: ", hidden_word)
-        print("Words: ", word)
+        print(hidden_word)
         guess = input("Guess a letter: ").upper()
 
         if guess in letters_tried:
@@ -58,7 +57,8 @@ def game():
             i += 1
             print("Incorrect guess!")
     print("Incorrect guesses:", i)
-    print("Game OVER, YOU SUCK!")
+    print("Game OVER, YOU SUCK!, the word was", word)
+
 
 
 game()
