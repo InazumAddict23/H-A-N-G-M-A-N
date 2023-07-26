@@ -35,11 +35,23 @@ def game():
     word, letters_tried, incorrect_guess = hangman()
     hidden_word = ["_"] * len(word)
     i = 0
+
+    print (word)
+
     while i < incorrect_guess:
         print("Max Guess: 6")
         print("Incorrect guesses:", i)
-        print(hidden_word)
-        guess = input("Guess a letter: ").upper()
+        
+        print("Tried letters: ")
+        for tried_letter in letters_tried:
+            print (tried_letter, end = " ")
+
+        print("\n")
+        
+        for letter in hidden_word:
+            print (letter, end=' ')
+            
+        guess = input("\nGuess a letter: ").upper()
 
         if guess in letters_tried:
             print("You already guessed that letter!")
@@ -50,7 +62,7 @@ def game():
         if guess in word:
             hidden_word = update_hidden(word, letters_tried, hidden_word)
             if stop_game(hidden_word):
-                print("Word: ", hidden_word)
+                print("Word: ", word)
                 print("Congratulations, You Won!")
                 return
         else:
