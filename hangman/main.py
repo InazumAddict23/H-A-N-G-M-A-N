@@ -71,6 +71,4 @@ def game():
     print("Incorrect guesses:", i)
     print("Game OVER, YOU SUCK!, the word was", word)
 
-
-
 game()
