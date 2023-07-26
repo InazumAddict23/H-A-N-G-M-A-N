@@ -36,10 +36,8 @@ def game():
     hidden_word = ["_"] * len(word)
     i = 0
 
-    print (word)
-
     while i < incorrect_guess:
-        print("Max Guess: 6")
+        print("\nMax Guess: 6")
         print("Incorrect guesses:", i)
         
         print("Tried letters: ")
@@ -64,11 +62,15 @@ def game():
             if stop_game(hidden_word):
                 print("Word: ", word)
                 print("Congratulations, You Won!")
+                print("Press any button to exit")
+                input()
                 return
         else:
             i += 1
             print("Incorrect guess!")
     print("Incorrect guesses:", i)
     print("Game OVER, YOU SUCK!, the word was", word)
-
+    print("Press any button to exit")
+    input()
+    return
 game()
