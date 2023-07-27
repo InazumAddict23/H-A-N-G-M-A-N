@@ -69,7 +69,7 @@ def game():
             i += 1
             print("Incorrect guess!")
     print("Incorrect guesses:", i)
-    print("Game OVER, YOU SUCK!, the word was", word)
+    print("Game OVER!, the word was", word)
     print("Press any button to exit")
     input()
     return
