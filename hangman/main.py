@@ -1,4 +1,5 @@
 import requests
+import string
 
 
 def get_random_word():
@@ -34,11 +35,12 @@ def stop_game(hidden_word):
 def game():
     word, letters_tried, incorrect_guess = hangman()
     hidden_word = ["_"] * len(word)
-    i = 0
+    alphabet = set(string.ascii_uppercase)
+    i = 6
 
-    while i < incorrect_guess:
-        print("\nMax Guess: 6")
-        print("Incorrect guesses:", i)
+    while i != 0:
+        print("--------------------------------------------")
+        print("\nGuesses remaining:", i)
         
         print("Tried letters: ")
         for tried_letter in letters_tried:
@@ -48,8 +50,14 @@ def game():
         
         for letter in hidden_word:
             print (letter, end=' ')
+        
+        print("\n\n--------------------------------------------")
             
         guess = input("\nGuess a letter: ").upper()
+
+        if guess not in alphabet:
+            print("Invalid letter, please try again")
+            continue
 
         if guess in letters_tried:
             print("You already guessed that letter!")
@@ -59,18 +67,23 @@ def game():
 
         if guess in word:
             hidden_word = update_hidden(word, letters_tried, hidden_word)
+            print(guess, " is in the word!")
             if stop_game(hidden_word):
+                print("\n--------------------------------------------")
                 print("Word: ", word)
                 print("Congratulations, You Won!")
                 print("Press any button to exit")
+                print("--------------------------------------------")
                 input()
                 return
         else:
-            i += 1
+            i -= 1
             print("Incorrect guess!")
     print("Incorrect guesses:", i)
+    print("\n--------------------------------------------")
     print("Game OVER!, the word was", word)
     print("Press any button to exit")
+    print("--------------------------------------------")
     input()
     return
 game()
